@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\User;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Home extends Component
 {
     public function render()
     {
-        return view('livewire.admin.home')->layout('layouts.app');
+        return view('livewire.user.home');
     }
 }

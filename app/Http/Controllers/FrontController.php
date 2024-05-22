@@ -15,7 +15,7 @@ class FrontController extends Controller
         if (!$configurationDone){
             return view('configuration');
         }
-        return view('welcome');
+        return Redirect::route('login');
     }
 
     public function saveConfiguration(Request $request)

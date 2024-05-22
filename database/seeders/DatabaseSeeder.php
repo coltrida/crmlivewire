@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ConfigurationSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(ShopSeeder::class);
+        $this->call(CodeclientSeeder::class);
 
         Storage::disk('public')->deleteDirectory('/images/');
         Storage::disk('public')->makeDirectory('/images');

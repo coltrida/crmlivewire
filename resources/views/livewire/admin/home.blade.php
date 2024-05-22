@@ -1,3 +1,3 @@
 <div>
-    {{-- Be like water. --}}
+    <h2>Home Admin</h2>
 </div>

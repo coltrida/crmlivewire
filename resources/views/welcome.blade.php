@@ -1,4 +1,5 @@
-{{--@if (Route::has('login'))
+
+@if (Route::has('login'))
     <livewire:welcome.navigation />
-@endif--}}
+@endif
 <x-guest-layout />
