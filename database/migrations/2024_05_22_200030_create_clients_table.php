@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('province')->nullable();
             $table->string('phone1');
             $table->string('phone2')->nullable();
-//            $table->foreignIdFor(Codeclient::class);
+            $table->foreignIdFor(Codeclient::class)->nullable();
             $table->foreignIdFor(Shop::class);
             $table->timestamps();
         });

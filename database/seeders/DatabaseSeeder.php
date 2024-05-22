@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ConfigurationSeeder::class);
         $this->call(RoleSeeder::class);
+        $this->call(CodeclientSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ShopSeeder::class);
-        $this->call(CodeclientSeeder::class);
 
         Storage::disk('public')->deleteDirectory('/images/');
         Storage::disk('public')->makeDirectory('/images');

@@ -10,4 +10,9 @@ class Codeclient extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
 }

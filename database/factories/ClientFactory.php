@@ -25,6 +25,7 @@ class ClientFactory extends Factory
             'province' => fake()->word(),
             'phone1' => fake()->phoneNumber(),
             'phone2' => fake()->phoneNumber(),
+            'codeclient_id' => rand(1,4)
         ];
     }
 }

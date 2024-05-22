@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Client;
+use App\Models\Codeclient;
 use App\Models\Shop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,7 @@ class ShopSeeder extends Seeder
      */
     public function run(): void
     {
+
         Shop::factory()
             ->count(1)
             ->has(Client::factory()->count(5))
