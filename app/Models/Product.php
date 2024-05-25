@@ -11,8 +11,18 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public function ProductList()
+    public function productList()
     {
         return $this->belongsTo(ProductList::class);
+    }
+
+    public function productState()
+    {
+        return $this->belongsTo(ProductState::class);
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
     }
 }

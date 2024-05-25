@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\ProductList;
-use App\Models\ProductState;
-use App\Models\Shop;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('product_states', function (Blueprint $table) {
             $table->id();
-            $table->string('matricola');
-            $table->foreignIdFor(ProductList::class);
-            $table->foreignIdFor(ProductState::class);
-            $table->foreignIdFor(Shop::class);
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('product_states');
     }
 };

@@ -39,16 +39,14 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile')" wire:navigate>
-                                    {{ __('Profile2') }}
-                                </x-dropdown-link>
-
-                                <!-- Authentication -->
-                                <button wire:click="logout" class="w-full text-start">
-                                    <x-dropdown-link>
-                                        {{ __('Log Out') }}
+                                @foreach($filiali as $filiale)
+                                    <x-dropdown-link :href="route('admin.clienti', ['idShop' => $filiale->id])" wire:navigate>
+                                        {{ $filiale->name }}
                                     </x-dropdown-link>
-                                </button>
+                                @endforeach
+                                <x-dropdown-link :href="route('profile')" wire:navigate>
+                                    {{ __('Riepilogo') }}
+                                </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>
@@ -83,6 +81,38 @@
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </button>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+
+                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <x-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <div x-data="{{ json_encode(['name' => 'Magazzini']) }}" x-text="name"
+                                         x-on:profile-updated.window="name = $event.detail.name"></div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                  clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                @foreach($filiali as $filiale)
+                                    <x-dropdown-link :href="route('admin.magazzino', ['idShop' => $filiale->id])" wire:navigate>
+                                        {{ $filiale->name }}
+                                    </x-dropdown-link>
+                                @endforeach
+                                <x-dropdown-link :href="route('profile')" wire:navigate>
+                                    {{ __('Riepilogo') }}
+                                </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>
@@ -194,7 +224,7 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="left" width="48">
+                <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
                             class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -214,25 +244,68 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Profile') }}
+                            <div class="flex justify-between">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{ __('Profile') }}
+                                </div>
+                            </div>
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Filiali') }}
+                            <div class="flex justify-between">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{ __('Filiali') }}
+                                </div>
+                            </div>
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Fornitori') }}
+                            <div class="flex justify-between">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{ __('Fornitori') }}
+                                </div>
+                            </div>
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Listini') }}
+                            <div class="flex justify-between">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{ __('Listini') }}
+                                </div>
+                            </div>
                         </x-dropdown-link>
 
                         <!-- Authentication -->
                         <button wire:click="logout" class="w-full text-start">
                             <x-dropdown-link>
-                                {{ __('Log Out') }}
+                               <div class="flex justify-between">
+                                   <div>
+                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                           <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                                       </svg>
+                                   </div>
+                                   <div>{{ __('Log Out') }}</div>
+                               </div>
                             </x-dropdown-link>
                         </button>
                     </x-slot>

@@ -3,16 +3,19 @@
 namespace App\Livewire\Layout;
 
 use App\Models\Configuration;
+use App\Models\Shop;
 use Livewire\Component;
 use App\Livewire\Actions\Logout;
 
 class NavigationAdmin extends Component
 {
     public $primaryColor;
+    public $filiali;
 
     public function mount()
     {
         $this->primaryColor = Configuration::first()?->primaryColor;
+        $this->filiali = Shop::all();
     }
 
     /**

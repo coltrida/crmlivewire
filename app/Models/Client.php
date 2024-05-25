@@ -16,7 +16,7 @@ class Client extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function codClient()
+    public function codeclient()
     {
         return $this->belongsTo(Codeclient::class);
     }

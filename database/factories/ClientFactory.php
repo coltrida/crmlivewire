@@ -16,16 +16,21 @@ class ClientFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
+        $surname = fake()->lastName();
+
         return [
-            'name' => fake()->name(),
-            'surname' => fake()->lastName(),
+            'name' => $name,
+            'surname' => $surname,
             'address' => fake()->address(),
             'city' => fake()->city(),
             'postcode' => fake()->postcode(),
             'province' => fake()->word(),
             'phone1' => fake()->phoneNumber(),
             'phone2' => fake()->phoneNumber(),
-            'codeclient_id' => rand(1,4)
+            'codeclient_id' => rand(1,4),
+            'fullname' => $name.' '.$surname,
+            'fullnamereverse' => $surname.' '.$name,
         ];
     }
 }

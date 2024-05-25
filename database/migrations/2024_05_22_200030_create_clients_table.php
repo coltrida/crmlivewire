@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('phone2')->nullable();
             $table->foreignIdFor(Codeclient::class)->nullable();
             $table->foreignIdFor(Shop::class);
+            $table->string('fullname');
+            $table->string('fullnamereverse');
             $table->timestamps();
         });
     }

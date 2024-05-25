@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\ProductType;
+use App\Models\Supplier;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('product_lists', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('cost');
+            $table->float('prize');
+            $table->foreignIdFor(Supplier::class);
+            $table->foreignIdFor(ProductType::class);
             $table->timestamps();
         });
     }
