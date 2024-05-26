@@ -28,6 +28,7 @@ class ClientFactory extends Factory
             'province' => fake()->word(),
             'phone1' => fake()->phoneNumber(),
             'phone2' => fake()->phoneNumber(),
+            'email' => fake()->email(),
             'codeclient_id' => rand(1,4),
             'fullname' => $name.' '.$surname,
             'fullnamereverse' => $surname.' '.$name,

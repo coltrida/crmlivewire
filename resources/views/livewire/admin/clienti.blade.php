@@ -1,6 +1,11 @@
 <div class="container mx-auto p-8">
     <div class="flex justify-between mb-4" style="align-items: center">
         <div>
+            <a href="{{route('admin.clienti.insert', $shopId)}}" wire:navigate type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
+                Nuovo paziente
+            </a>
+        </div>
+        <div>
             <h2 class="text-xl font-semibold text-center mb-4">Clienti: {{$shopById->name}}</h2>
         </div>
         <div class="relative">
@@ -47,6 +52,9 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     CAP
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    email
                 </th>
             </tr>
             </thead>
@@ -122,6 +130,9 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     {{$client->postcode}}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{$client->email}}
                 </td>
             </tr>
             @endforeach

@@ -15,19 +15,34 @@ class CodeclientSeeder extends Seeder
     {
         Codeclient::insert([
             [
-                'name' => 'CL'
+                'name' => 'CL',
+                'description' => 'cliente',
+                'daysOfRecall' => 60
             ],
             [
-                'name' => 'PC'
+                'name' => 'PC',
+                'description' => 'Possibile Cliente',
+                'daysOfRecall' => 90
             ],
             [
-                'name' => 'CLC'
+                'name' => 'CLC',
+                'description' => 'cliente concorrenza',
+                'daysOfRecall' => 360
             ],
             [
-                'name' => 'NU'
+                'name' => 'NU',
+                'description' => 'normoudente',
+                'daysOfRecall' => 360
             ],
             [
-                'name' => 'TAPPO'
+                'name' => 'TAPPO',
+                'description' => 'tappo cerume',
+                'daysOfRecall' => 60
+            ],
+            [
+                'name' => 'DEC',
+                'description' => 'deceduto',
+                'daysOfRecall' => null
             ],
         ]);
     }
