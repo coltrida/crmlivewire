@@ -20,4 +20,9 @@ class Client extends Model
     {
         return $this->belongsTo(Codeclient::class);
     }
+
+    public function canal()
+    {
+        return $this->belongsTo(Canal::class);
+    }
 }

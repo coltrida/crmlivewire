@@ -30,6 +30,7 @@ class ClientFactory extends Factory
             'phone2' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'codeclient_id' => rand(1,4),
+            'canal_id' => rand(1,4),
             'fullname' => $name.' '.$surname,
             'fullnamereverse' => $surname.' '.$name,
         ];

@@ -11,20 +11,25 @@ class Clienti extends Component
 {
     use WithPagination;
 
-    public $shopId;
+    public $idShop;
     public $search;
 
     public function mount($idShop)
     {
-        $this->shopId = $idShop;
+        $this->idShop = $idShop;
         $this->search = null;
+    }
+
+    public function elimina($idClient, ClientService $clientService)
+    {
+        $clientService->elimina($idClient);
     }
 
     public function render(ClientService $clientService, ShopService $shopService)
     {
         return view('livewire.admin.clienti', [
-            'clientOfShopPaginate' => $clientService->clientOfShopWithSearchPaginate($this->shopId, $this->search),
-            'shopById' => $shopService->shopById($this->shopId)
+            'clientOfShopPaginate' => $clientService->clientOfShopWithSearchPaginate($this->idShop, $this->search),
+            'shopById' => $shopService->shopById($this->idShop)
         ])->layout('layouts.app');
     }
 }

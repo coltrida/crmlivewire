@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Canal;
 use App\Models\Codeclient;
 use App\Models\Shop;
 use Illuminate\Database\Migrations\Migration;
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->foreignIdFor(Codeclient::class)->nullable();
             $table->foreignIdFor(Shop::class);
+            $table->foreignIdFor(Canal::class);
             $table->string('fullname');
             $table->string('fullnamereverse');
             $table->timestamps();
