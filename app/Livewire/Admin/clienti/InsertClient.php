@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\clienti;
 
 use App\Models\Client;
 use App\Services\CanaliService;
@@ -115,7 +115,7 @@ class InsertClient extends Component
 
     public function render(CodeClientService $codeClientService, CanaliService $canaliService)
     {
-        return view('livewire.admin.insert-client', [
+        return view('livewire.admin.clienti.insert-client', [
             'codeClient' => $codeClientService->list(),
             'canaliMKT' => $canaliService->lista()
         ])->layout('layouts.app');

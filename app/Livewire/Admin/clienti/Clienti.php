@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\clienti;
 
 use App\Services\ClientService;
 use App\Services\ShopService;
@@ -27,7 +27,7 @@ class Clienti extends Component
 
     public function render(ClientService $clientService, ShopService $shopService)
     {
-        return view('livewire.admin.clienti', [
+        return view('livewire.admin.clienti.clienti', [
             'clientOfShopPaginate' => $clientService->clientOfShopWithSearchPaginate($this->idShop, $this->search),
             'shopById' => $shopService->shopById($this->idShop)
         ])->layout('layouts.app');

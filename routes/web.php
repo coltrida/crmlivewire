@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\FrontController;
-use App\Livewire\Admin\Clienti;
-use App\Livewire\Admin\InsertClient;
+use App\Livewire\Admin\clienti\Clienti;
+use App\Livewire\Admin\clienti\InsertClient;
+use App\Livewire\Admin\Clienti\RiepilogoClient;
 use App\Livewire\Admin\Magazzini;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,12 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::get('dashboard', \App\Livewire\Admin\Home::class)->name('dashboard');
+
+//----------------- magazzino ----------------//
 Route::get('magazzino/{idShop}', Magazzini::class)->name('admin.magazzino');
+
+//----------------- clienti--------------------//
+Route::get('clienti/riepilogo', RiepilogoClient::class)->name('admin.clienti.riepilogo');
 Route::get('clienti/{idShop}', Clienti::class)->name('admin.clienti');
 Route::get('clienti/insert/{idShop}', InsertClient::class)->name('admin.clienti.insert');
 

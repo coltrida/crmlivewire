@@ -3,9 +3,49 @@
 namespace App\Services;
 
 use App\Models\Client;
+use App\Models\Shop;
 
 class ClientService
 {
+    public function riepilogoAllClients()
+    {
+        return Shop::
+            withCount(['clients as cli' => function($q){
+                $q->whereHas('codeclient', function ($z){
+                    $z->where('name', 'CL');
+                });
+            }])
+            ->withCount(['clients as pc' => function($q){
+                $q->whereHas('codeclient', function ($z){
+                    $z->where('name', 'PC');
+                });
+            }])
+            ->withCount(['clients as clc' => function($q){
+                $q->whereHas('codeclient', function ($z){
+                    $z->where('name', 'CLC');
+                });
+            }])
+            ->withCount(['clients as normo' => function($q){
+                $q->whereHas('codeclient', function ($z){
+                    $z->where('name', 'NU');
+                });
+            }])
+            ->withCount(['clients as tappo' => function($q){
+                $q->whereHas('codeclient', function ($z){
+                    $z->where('name', 'TAPPO');
+                });
+            }])
+            ->withCount(['clients as dec' => function($q){
+                $q->whereHas('codeclient', function ($z){
+                    $z->where('name', 'DEC');
+                });
+            }])
+            ->withCount('clients as tot')
+            ->orderBy('name')
+            ->get();
+
+    }
+
     public function clientOfShopWithSearchPaginate($shopId, $search)
     {
         if ($search){
