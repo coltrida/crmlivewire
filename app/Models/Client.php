@@ -25,4 +25,9 @@ class Client extends Model
     {
         return $this->belongsTo(Canal::class);
     }
+
+    public function trials()
+    {
+        return $this->hasMany(Trial::class);
+    }
 }

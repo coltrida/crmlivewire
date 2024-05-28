@@ -81,7 +81,7 @@
                                 </svg>
                             </button>
 
-                            <button title="modifica" href="{{route('admin.clienti.insert',
+                            <a title="modifica" href="{{route('admin.clienti.insert',
                                         ['idShop' => $idShop, 'idClient' => $client->id])}}" wire:navigate
                                     class="mr-2 bg-transparent hover:bg-blue-500 text-blue-600 font-semibold hover:text-white py-2 px-2 border border-blue-500 hover:border-transparent rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -89,9 +89,9 @@
                                     <path
                                         d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z"/>
                                 </svg>
-                            </button>
+                            </a>
 
-                            <button title="prova"
+                            <a title="prova" href="{{route('admin.clienti.prova',$client->id)}}" wire:navigate
                                     class="mr-2 bg-transparent hover:bg-green-500 text-green-600 font-semibold hover:text-white py-2 px-2 border border-green-500 hover:border-transparent rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                      class="size-6">
@@ -102,7 +102,7 @@
                                     <path
                                         d="m10.933 19.231-7.668-4.13-1.37.739a.75.75 0 0 0 0 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 0 0 0-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 0 1-2.134-.001Z"/>
                                 </svg>
-                            </button>
+                            </a>
 
                             <button title="audiometria"
                                     class="mr-2 bg-transparent hover:bg-purple-500 text-purple-600 font-semibold hover:text-white py-2 px-2 border border-purple-500 hover:border-transparent rounded">
