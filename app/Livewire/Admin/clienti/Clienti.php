@@ -6,6 +6,7 @@ use App\Services\ClientService;
 use App\Services\ShopService;
 use Livewire\Component;
 use Livewire\WithPagination;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Clienti extends Component
 {
@@ -18,6 +19,10 @@ class Clienti extends Component
     {
         $this->idShop = $idShop;
         $this->search = null;
+        if (session('status')){
+            Alert::success('Ottimo', session('status'));
+        }
+
     }
 
     public function elimina($idClient, ClientService $clientService)

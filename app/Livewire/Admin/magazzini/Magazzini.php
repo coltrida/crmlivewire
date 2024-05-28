@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\magazzini;
 
 use App\Services\ProductService;
 use App\Services\ShopService;
-use Livewire\WithPagination;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Magazzini extends Component
 {
@@ -21,7 +21,7 @@ class Magazzini extends Component
 
     public function render(ProductService $productService, ShopService $shopService)
     {
-        return view('livewire.admin.magazzini', [
+        return view('livewire.admin.magazzini.magazzini', [
             'productsOfShopPaginate' => $productService->productsOfShopPaginate($this->shopId),
             'shopById' => $shopService->shopById($this->shopId)
         ])->layout('layouts.app');

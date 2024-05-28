@@ -81,7 +81,8 @@
                                 </svg>
                             </button>
 
-                            <button title="modifica"
+                            <button title="modifica" href="{{route('admin.clienti.insert',
+                                        ['idShop' => $idShop, 'idClient' => $client->id])}}" wire:navigate
                                     class="mr-2 bg-transparent hover:bg-blue-500 text-blue-600 font-semibold hover:text-white py-2 px-2 border border-blue-500 hover:border-transparent rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                      class="size-6">
@@ -181,29 +182,3 @@
     </div>
 
 </div>
-
-
-<script>
-    /*    const targetEl = document.getElementById('targetElement');
-        // instance options object
-        const instanceOptions = {
-            id: 'modalEl',
-            override: true
-        };
-
-        setInterval(function (){
-            targetEl.hide();
-        }, 1000);*/
-
-
-    /*    let fadeEffect = setInterval(function () {
-            if (!targetEl.style.opacity) {
-                targetEl.style.opacity = 1;
-            }
-            if (targetEl.style.opacity > 0) {
-                targetEl.style.opacity -= 0.2;
-            } else {
-                clearInterval(fadeEffect);
-            }
-        }, 1000);*/
-</script>

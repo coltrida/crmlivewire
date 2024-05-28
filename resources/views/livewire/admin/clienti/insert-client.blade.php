@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <form wire:submit="insertClient">
+    <form wire:submit="insertUpdateClient">
         <div class="grid md:grid-cols-4 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
                 <label for="codeclient_id" class="sr-only">Underline select</label>
@@ -113,12 +113,14 @@
 
         <div class="mt-6">
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Inserisci
+                {{$insertOrUpdate ? 'Modifica' : 'Inserisci'}}
             </button>
 
-            <button type="reset" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                Annulla
-            </button>
+            @if(!$insertOrUpdate)
+                <button type="reset" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                    Annulla
+                </button>
+            @endif
         </div>
 
     </form>

@@ -9,7 +9,6 @@ class RiepilogoClient extends Component
 {
     public function render(ClientService $clientService)
     {
-       // dd($clientService->riepilogoAllClients());
         return view('livewire.admin.clienti.riepilogo-client', [
             'riepilogoAllClients' => $clientService->riepilogoAllClients()
         ])->layout('layouts.app');

@@ -110,7 +110,7 @@
                                         {{ $filiale->name }}
                                     </x-dropdown-link>
                                 @endforeach
-                                <x-dropdown-link :href="route('profile')" wire:navigate>
+                                <x-dropdown-link :href="route('admin.magazzino.riepilogo')" wire:navigate>
                                     {{ __('Riepilogo') }}
                                 </x-dropdown-link>
                             </x-slot>
