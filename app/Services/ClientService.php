@@ -7,6 +7,11 @@ use App\Models\Shop;
 
 class ClientService
 {
+    public function clientById($idClient)
+    {
+        return Client::find($idClient);
+    }
+
     public function riepilogoAllClients()
     {
         return Shop::
