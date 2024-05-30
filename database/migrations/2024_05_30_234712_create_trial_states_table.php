@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Canal;
-use App\Models\Client;
-use App\Models\TrialState;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trials', function (Blueprint $table) {
+        Schema::create('trial_states', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(TrialState::class);
-            $table->float('importoTot')->nullable();
-            $table->foreignIdFor(Client::class);
-            $table->foreignIdFor(Canal::class);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trials');
+        Schema::dropIfExists('trial_states');
     }
 };

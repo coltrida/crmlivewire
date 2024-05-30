@@ -20,4 +20,14 @@ class Trial extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function trialState()
+    {
+        return $this->belongsTo(TrialState::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

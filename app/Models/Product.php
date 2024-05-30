@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsTo(Shop::class);
     }
+
+    public function trial()
+    {
+        return $this->belongsTo(Trial::class);
+    }
 }

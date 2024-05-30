@@ -30,4 +30,11 @@ class Client extends Model
     {
         return $this->hasMany(Trial::class);
     }
+
+    public function trialsUnderConstructions()
+    {
+        return $this->hasMany(Trial::class)->whereHas('trialState', function ($state){
+            $state->where('name', 'Under Construction');
+        });
+    }
 }

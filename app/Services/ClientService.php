@@ -4,12 +4,13 @@ namespace App\Services;
 
 use App\Models\Client;
 use App\Models\Shop;
+use Illuminate\Database\Eloquent\Builder;
 
 class ClientService
 {
-    public function clientById($idClient)
+    public function clientByIdWithTrialUnderConstruction($idClient)
     {
-        return Client::find($idClient);
+        return Client::with('trialsUnderConstructions')->find($idClient);
     }
 
     public function riepilogoAllClients()

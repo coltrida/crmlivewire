@@ -3,6 +3,7 @@
 use App\Models\ProductList;
 use App\Models\ProductState;
 use App\Models\Shop;
+use App\Models\Trial;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(ProductList::class);
             $table->foreignIdFor(ProductState::class);
             $table->foreignIdFor(Shop::class);
+            $table->foreignIdFor(Trial::class)->nullable();
             $table->timestamps();
         });
     }

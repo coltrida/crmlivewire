@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ConfigurationSeeder::class);
         $this->call(RoleSeeder::class);
+        $this->call(TrialStateSeeder::class);
         $this->call(CanalSeeder::class);
         $this->call(CodeclientSeeder::class);
         $this->call(UserSeeder::class);
