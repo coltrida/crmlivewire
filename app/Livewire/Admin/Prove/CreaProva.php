@@ -34,19 +34,30 @@ class CreaProva extends Component
     {
         if ($this->client->trialsUnderConstructions->count() == 0){
             $idStateTrialUnderConstruction = $trialService->idTrialStateByName('Under Construction');
-            $this->trialUnderConstruction = Trial::create([
-                'client_id' => $this->client->id,
-                'canal_id' => $this->client->canal_id,
-                'trial_state_id' => $idStateTrialUnderConstruction
-            ]);
+            $this->trialUnderConstruction =
+                $trialService->creaProva($this->client->id, $this->client->canal_id, $idStateTrialUnderConstruction);
         }
         $idStateApaInTrial = $productService->idProductStateByName('IN PROVA');
         $trialService->insertProductInTrial($this->productId, $this->trialUnderConstruction->id, $idStateApaInTrial);
         $this->trialUnderConstruction->load(['products' => function($p){
             $p->with('productList');
         }]);
-       // dd($this->trialUnderConstruction);
         $this->reset('supplierId', 'listinoId', 'productId');
+    }
+
+    public function togliProdotto($idProduct, TrialService $trialService, ProductService $productService)
+    {
+        $idStateApaInMagazzino = $productService->idProductStateByName('MAGAZZINO');
+        $trialService->togliProductInTrial($idProduct, $this->trialUnderConstruction->id, $idStateApaInMagazzino);
+    }
+
+    public function salvaProva(TrialService $trialService)
+    {
+        $idStateTrialInCorso = $trialService->idTrialStateByName('In Corso');
+        $trialService->salvaProva($this->trialUnderConstruction->id, $idStateTrialInCorso);
+        $this->reset('trialUnderConstruction');
+        session()->flash('prova', 'Prova in corso creata');
+        $this->redirect(route('admin.clienti.prova', $this->client->id));
     }
 
     public function render(SupplierService $supplierService, ProductService $productService)

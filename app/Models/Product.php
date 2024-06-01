@@ -26,8 +26,8 @@ class Product extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function trial()
+    public function trials()
     {
-        return $this->belongsTo(Trial::class);
+        return $this->belongsToMany(Trial::class);
     }
 }

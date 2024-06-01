@@ -11,6 +11,11 @@ class Trial extends Model
 
     protected $guarded = [];
 
+    public function getImportoTotFormattatoAttribute()
+    {
+        return $this->importoTot ? '€ '.number_format( (float) $this->importoTot, '2', ',', '.') : null;
+    }
+
     public function canal()
     {
         return $this->belongsTo(Canal::class);
@@ -28,6 +33,6 @@ class Trial extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }

@@ -22,7 +22,6 @@ class Clienti extends Component
         if (session('status')){
             Alert::success('Ottimo', session('status'));
         }
-
     }
 
     public function elimina($idClient, ClientService $clientService)

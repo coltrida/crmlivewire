@@ -11,9 +11,9 @@ class ProductList extends Model
 
     protected $guarded = [];
 
-    public function getPrizeFormattedAttribute()
+    public function getPrizeFormattatoAttribute()
     {
-        return '€ '.number_format($this->prize, 2, ',', '.');
+        return $this->prize ? '€ '.number_format( (float) $this->prize, '2', ',', '.') : null;
     }
 
     public function getCostFormattedAttribute()
