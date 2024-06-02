@@ -11,13 +11,13 @@ class Invoice extends Model
 
     protected $guarded = [];
 
-    public function canal()
+    public function trial()
     {
-        return $this->belongsTo(Canal::class);
+        return $this->belongsTo(Trial::class);
     }
 
-    public function client()
+    public function payments()
     {
-        return $this->belongsTo(Client::class);
+        return $this->hasMany(Payment::class);
     }
 }

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->float('importoTot')->nullable();
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(Canal::class);
+            $table->date('dataFinalizzatoReso')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

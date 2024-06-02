@@ -71,16 +71,14 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile')" wire:navigate>
-                                    {{ __('Profile2') }}
-                                </x-dropdown-link>
-
-                                <!-- Authentication -->
-                                <button wire:click="logout" class="w-full text-start">
-                                    <x-dropdown-link>
-                                        {{ __('Log Out') }}
+                                @foreach($filiali as $filiale)
+                                    <x-dropdown-link :href="route('admin.prove.filiale', ['idShop' => $filiale->id])" wire:navigate>
+                                        {{ $filiale->name }}
                                     </x-dropdown-link>
-                                </button>
+                                @endforeach
+                                <x-dropdown-link :href="route('admin.prove.riepilogo')" wire:navigate>
+                                    {{ __('Riepilogo') }}
+                                </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>

@@ -7,6 +7,8 @@ use App\Livewire\Admin\Clienti\RiepilogoClient;
 use App\Livewire\Admin\magazzini\Magazzini;
 use App\Livewire\Admin\Magazzini\RiepilogoMagazzini;
 use App\Livewire\Admin\Prove\ProvaPaziente;
+use App\Livewire\Admin\Prove\ProveFiliale;
+use App\Livewire\Admin\Prove\RiepilogoProve;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('inizio');
@@ -32,6 +34,8 @@ Route::get('clienti/{idShop}', Clienti::class)->name('admin.clienti');
 Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('admin.clienti.insert');
 
 //----------------- prove --------------------//
+Route::get('prove/riepilogo', RiepilogoProve::class)->name('admin.prove.riepilogo');
 Route::get('clienti/prova/{idClient}', ProvaPaziente::class)->name('admin.clienti.prova');
+Route::get('prove/{idShop}', ProveFiliale::class)->name('admin.prove.filiale');
 
 require __DIR__.'/auth.php';

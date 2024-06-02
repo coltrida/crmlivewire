@@ -18,6 +18,7 @@ class CreaProva extends Component
     public int $productId;
     public Client $client;
     public Trial $trialUnderConstruction;
+    public string $note = '';
 
     public function mount($idClient, ClientService $clientService)
     {
@@ -54,7 +55,7 @@ class CreaProva extends Component
     public function salvaProva(TrialService $trialService)
     {
         $idStateTrialInCorso = $trialService->idTrialStateByName('In Corso');
-        $trialService->salvaProva($this->trialUnderConstruction->id, $idStateTrialInCorso);
+        $trialService->salvaProva($this->trialUnderConstruction->id, $idStateTrialInCorso, $this->note);
         $this->reset('trialUnderConstruction');
         session()->flash('prova', 'Prova in corso creata');
         $this->redirect(route('admin.clienti.prova', $this->client->id));

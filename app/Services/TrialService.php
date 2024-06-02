@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Product;
 use App\Models\Trial;
 use App\Models\TrialState;
+use Carbon\Carbon;
 
 class TrialService
 {
@@ -51,7 +52,7 @@ class TrialService
         $prova->products()->detach($product->id);
     }
 
-    public function salvaProva($idTrial, $idStateTrialInCorso)
+    public function salvaProva($idTrial, $idStateTrialInCorso, $note)
     {
         $trial = Trial::with(['products' => function($p){
             $p->with('productList');
@@ -59,6 +60,7 @@ class TrialService
        // dd($trial->products);
         $trial->importoTot = $trial->products->sum('productList.prize');
         $trial->trial_state_id = $idStateTrialInCorso;
+        $trial->note = $note;
         $trial->save();
     }
 
@@ -71,17 +73,38 @@ class TrialService
         }])->find($idClient)->trials;
     }
 
-    public function reso($idProva, $idStatoReso)
+    public function reso($idProva, $idStatoProvaReso, $idStatoProdottoInMagazzino)
     {
-        Trial::find($idProva)->update([
-            'trial_state_id' => $idStatoReso
+        $prova = Trial::with('products')->find($idProva);
+        $prova->update([
+            'trial_state_id' => $idStatoProvaReso,
+            'dataFinalizzatoReso' => Carbon::now()
         ]);
+        foreach ($prova->products as $prodotto){
+            $prodotto->product_state_id = $idStatoProdottoInMagazzino;
+            $prodotto->save();
+        }
     }
 
-    public function provaPositiva($idProva, $idStatoPositivo)
+    public function provaPositiva($idProva, $idStatoPositivo, $idStatoProdottoVenduto)
     {
-        Trial::find($idProva)->update([
-            'trial_state_id' => $idStatoPositivo
+        $prova = Trial::with('products')->find($idProva);
+        $prova->update([
+            'trial_state_id' => $idStatoPositivo,
+            'dataFinalizzatoReso' => Carbon::now()
         ]);
+        foreach ($prova->products as $prodotto){
+            $prodotto->product_state_id = $idStatoProdottoVenduto;
+            $prodotto->save();
+        }
+    }
+
+    public function provaConProdotti($idProva)
+    {
+        return Trial::with(['trialState','products' => function($p){
+            $p->with(['productList' => function($pl){
+                $pl->with('supplier');
+            }]);
+        }])->find($idProva);
     }
 }
