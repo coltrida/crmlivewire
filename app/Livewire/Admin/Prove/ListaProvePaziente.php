@@ -79,6 +79,7 @@ class ListaProvePaziente extends Component
         $this->pagamenti = $invoiceService->listaPagamenti($this->dettagliProva->id);
         $this->rimanenzaAlSaldo = $this->dettagliProva->importoTot - $this->pagamenti->sum('importo');
         $this->showNuovoPagamento = 0;
+        $this->reset('importoPagamento');
     }
 
     public function render(TrialService $trialService)

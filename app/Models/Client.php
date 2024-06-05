@@ -37,4 +37,9 @@ class Client extends Model
             $state->where('name', 'Under Construction');
         });
     }
+
+    public function audiometrics()
+    {
+        return $this->hasMany(Audiometric::class);
+    }
 }

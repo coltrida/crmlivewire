@@ -18,10 +18,8 @@ class ProvaPaziente extends Component
         }
     }
 
-    public function render(TrialService $trialService)
+    public function render()
     {
-        return view('livewire.admin.prove.prova-paziente', [
-            'clientWithTrials' => $trialService->clientWithTrials($this->idClient)
-        ])->layout('layouts.app');
+        return view('livewire.admin.prove.prova-paziente')->layout('layouts.app');
     }
 }

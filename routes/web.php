@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Livewire\Admin\Audiometrie\AudiometriaPaziente;
 use App\Livewire\Admin\clienti\Clienti;
 use App\Livewire\Admin\clienti\InsertClient;
 use App\Livewire\Admin\Clienti\RiepilogoClient;
@@ -37,5 +38,8 @@ Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('ad
 Route::get('prove/riepilogo', RiepilogoProve::class)->name('admin.prove.riepilogo');
 Route::get('clienti/prova/{idClient}', ProvaPaziente::class)->name('admin.clienti.prova');
 Route::get('prove/{idShop}', ProveFiliale::class)->name('admin.prove.filiale');
+
+//------------------ audiometrie -------------//
+Route::get('clienti/audiometria/{idClient}', AudiometriaPaziente::class)->name('admin.clienti.audiometria');
 
 require __DIR__.'/auth.php';
