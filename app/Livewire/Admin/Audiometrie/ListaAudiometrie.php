@@ -14,6 +14,11 @@ class ListaAudiometrie extends Component
         $this->idClient = $idClient;
     }
 
+    public function selezionaAudiometria($idAudiometria)
+    {
+        $this->dispatch('audiometric-selected', idAudiometria: $idAudiometria);
+    }
+
     public function render(AudiometricService $audiometricService)
     {
         return view('livewire.admin.audiometrie.lista-audiometrie', [

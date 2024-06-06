@@ -2,14 +2,18 @@
 
 namespace App\Livewire\Admin\Audiometrie;
 
-use App\Models\Audiometric;
+use App\Models\Client;
 use App\Services\AudiometricService;
+use App\Services\ClientService;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class VisualizzaAudiometria extends Component
 {
     public int $client_id;
     public int $showCreaAudiometria = 0;
+    public Client $client;
+
     public $audiometriaDXPaziente;
     public $audiometriaSXPaziente;
 
@@ -26,16 +30,26 @@ class VisualizzaAudiometria extends Component
     public int $d6000;
     public int $d8000;
 
-    public function mount($idClient, AudiometricService $audiometricService)
+    public function mount($idClient, $idAudiometria, AudiometricService $audiometricService, ClientService $clientService)
     {
         $this->client_id = $idClient;
-        $this->audiometriaDXPaziente = $audiometricService->caricaAudiometriaPiuRecenteByIdClient($idClient)[0];
-        $this->audiometriaSXPaziente = $audiometricService->caricaAudiometriaPiuRecenteByIdClient($idClient)[1];
+        $this->client = $clientService->clientById($idClient);
+
+        if ($idAudiometria){
+          $this->audiometriaDXPaziente = $audiometricService->caricaAudiometriaById($idAudiometria)[0];
+          $this->audiometriaSXPaziente = $audiometricService->caricaAudiometriaById($idAudiometria)[1];
+        } else {
+            $this->audiometriaDXPaziente = $audiometricService->caricaAudiometriaPiuRecenteByIdClient($idClient)[0];
+            $this->audiometriaSXPaziente = $audiometricService->caricaAudiometriaPiuRecenteByIdClient($idClient)[1];
+        }
+
     }
 
+    #[On('audiometric-selected')]
     public function caricaAudiometriaPaziente($idAudiometria, AudiometricService $audiometricService)
     {
-        $this->audiometriaDXPaziente = $audiometricService->caricaAudiometriaById($idAudiometria);
+        $this->redirect(route('admin.clienti.audiometria',
+            ['idClient' => $this->client_id, 'idAudiometria' => $idAudiometria]));
     }
 
     public function creaAudiometria()

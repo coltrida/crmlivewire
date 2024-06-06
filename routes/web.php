@@ -40,6 +40,6 @@ Route::get('clienti/prova/{idClient}', ProvaPaziente::class)->name('admin.client
 Route::get('prove/{idShop}', ProveFiliale::class)->name('admin.prove.filiale');
 
 //------------------ audiometrie -------------//
-Route::get('clienti/audiometria/{idClient}', AudiometriaPaziente::class)->name('admin.clienti.audiometria');
+Route::get('clienti/audiometria/{idClient}/{idAudiometria?}', AudiometriaPaziente::class)->name('admin.clienti.audiometria');
 
 require __DIR__.'/auth.php';

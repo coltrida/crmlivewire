@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ClientService
 {
+    public function clientById($idClient)
+    {
+        return Client::find($idClient);
+    }
+
     public function clientByIdWithTrialUnderConstruction($idClient)
     {
         return Client::with('trialsUnderConstructions')->find($idClient);

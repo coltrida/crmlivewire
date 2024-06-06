@@ -8,10 +8,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AudiometriaPaziente extends Component
 {
     public int $idClient;
+    public int $idAudiometria;
 
-    public function mount($idClient)
+    public function mount($idClient, $idAudiometria=0)
     {
         $this->idClient = $idClient;
+        $this->idAudiometria = $idAudiometria;
+
         if (session('audiometria')){
             Alert::success('Ottimo', session('audiometria'));
         }

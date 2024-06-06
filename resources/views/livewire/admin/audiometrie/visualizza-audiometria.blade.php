@@ -2,13 +2,18 @@
     @if(!$showCreaAudiometria)
         <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg p-4">
             <div class="flex justify-between items-center">
-                <h2 class="font-semibold text-center text-xl">Audiometria</h2>
                 <button wire:click="creaAudiometria" class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
                     Crea audiometria
                 </button>
+
+                <div>
+                    Audiometria di - {{$client->fullname}}
+                </div>
+
+                <a href="{{route('admin.clienti', $client->shop_id)}}" wire:navigate class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
+                    indietro
+                </a>
             </div>
-
-
 
             <div class="w-full bg-white rounded-lg shadow dark:bg-gray-800">
                 <div class="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
@@ -142,7 +147,6 @@
 
 @script
 <script>
-
 
     const options = {
 // set the labels option to true to show the labels on the X and Y axis

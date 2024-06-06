@@ -20,15 +20,16 @@ class AudiometricService
 
     public function caricaAudiometriaById($idAudiometria)
     {
-        return Audiometric::find($idAudiometria);
+        return [
+            array_values(Arr::only(Audiometric::find($idAudiometria)->toArray(),
+                ['d250', 'd500', 'd1000', 'd2000', 'd6000', 'd8000'])),
+            array_values(Arr::only(Audiometric::find($idAudiometria)->toArray(),
+                ['s250', 's500', 's1000', 's2000', 's6000', 's8000']))
+        ];
     }
 
     public function caricaAudiometriaPiuRecenteByIdClient($idClient)
     {
-        /*dd(array_values(Arr::only(Client::with(['audiometrics' => function($a){
-            $a->latest();
-        }])->find($idClient)->audiometrics->first()->toArray(), ['d250', 'd500', 'd1000', 'd2000', 'd6000', 'd8000'])));*/
-
         $esisteAudiomestria = [ [], [] ];
 
         if (count(Client::with('audiometrics')->find($idClient)->audiometrics) > 0){
@@ -45,9 +46,5 @@ class AudiometricService
         }
 
         return $esisteAudiomestria;
-
-        /*return array_values(Arr::only(Client::with(['audiometrics' => function($a){
-            $a->latest();
-        }])->find($idClient)->audiometrics->first()->toArray(), ['d250', 'd500', 'd1000', 'd2000', 'd6000', 'd8000']));*/
     }
 }
