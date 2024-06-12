@@ -59,7 +59,8 @@ class VisualizzaAudiometria extends Component
 
     public function insertAudiometria(AudiometricService $audiometricService)
     {
-        $audiometricService->crea($this->except(['showCreaAudiometria', 'audiometriaDXPaziente', 'audiometriaSXPaziente']));
+        $audiometricService->crea($this->except(['showCreaAudiometria',
+            'audiometriaDXPaziente', 'audiometriaSXPaziente', 'client']));
         $this->showCreaAudiometria = 0;
         session()->flash('audiometria', 'Audiometria inserita correttamente');
         $this->resetExcept('client_id');

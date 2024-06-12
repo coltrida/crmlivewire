@@ -113,7 +113,7 @@
                                 </svg>
                             </a>
 
-                            <button title="telefonate"
+                            <button title="telefonate" href="{{route('admin.clienti.telefonate',$client->id)}}" wire:navigate
                                     class="mr-2 bg-transparent hover:bg-orange-500 text-orange-600 font-semibold hover:text-white py-2 px-2 border border-orange-500 hover:border-transparent rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                      class="size-6">

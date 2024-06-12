@@ -10,6 +10,7 @@ use App\Livewire\Admin\Magazzini\RiepilogoMagazzini;
 use App\Livewire\Admin\Prove\ProvaPaziente;
 use App\Livewire\Admin\Prove\ProveFiliale;
 use App\Livewire\Admin\Prove\RiepilogoProve;
+use App\Livewire\Admin\Telefonate\TelefonatePaziente;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('inizio');
@@ -41,5 +42,8 @@ Route::get('prove/{idShop}', ProveFiliale::class)->name('admin.prove.filiale');
 
 //------------------ audiometrie -------------//
 Route::get('clienti/audiometria/{idClient}/{idAudiometria?}', AudiometriaPaziente::class)->name('admin.clienti.audiometria');
+
+//----------------- telefonate ---------------//
+Route::get('clienti/telefonate/{idClient}', TelefonatePaziente::class)->name('admin.clienti.telefonate');
 
 require __DIR__.'/auth.php';

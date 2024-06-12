@@ -1,6 +1,12 @@
 <div class="w-6/12 mr-2">
     <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg p-4">
-        <h2 class="font-semibold text-center text-xl">Crea prova - {{$client->fullname}}</h2>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-center text-xl">Crea prova - {{$client->fullname}}</h2>
+            <a href="{{route('admin.clienti', $client->shop_id)}}" wire:navigate class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
+                indietro
+            </a>
+        </div>
+
         <form wire:submit="creaOrUpdateProva">
             <div class="grid md:grid-cols-4 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">

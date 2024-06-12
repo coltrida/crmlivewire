@@ -12,7 +12,6 @@ use Livewire\Component;
 
 class CreaProva extends Component
 {
-
     public int $supplierId = 0;
     public int $listinoId = 0;
     public int $productId;

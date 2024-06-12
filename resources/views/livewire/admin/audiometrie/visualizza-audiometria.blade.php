@@ -224,6 +224,9 @@
         },
         dataLabels: {
             enabled: true,
+            formatter: function(value) {
+                return value * (-1)
+            }
         },
         stroke: {
             width: 2,
