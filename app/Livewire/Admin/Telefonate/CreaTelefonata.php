@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin\Telefonate;
 
 use App\Models\Client;
-use App\Services\ClientService;
 use App\Services\PhoneService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -26,7 +25,9 @@ class CreaTelefonata extends Component
     public function salvaTelefonata(PhoneService $phoneService)
     {
         $phoneService->salvaTelefonata($this->except('client'));
+        session()->flash('phone', $this->esito);
         $this->reset('esito', 'note');
+        $this->redirect(route('admin.clienti.telefonate', $this->client->id));
     }
 
     public function render()

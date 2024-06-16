@@ -1,7 +1,7 @@
 <div>
     <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg p-4">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-center text-xl">Telefonata - {{$client->fullname}}</h2>
+            <h2 class="font-semibold text-center">Tel - {{$client->fullname}}</h2>
             <a href="{{route('admin.clienti', $client->shop_id)}}" wire:navigate class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
                 indietro
             </a>

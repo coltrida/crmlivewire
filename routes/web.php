@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Livewire\Admin\Appuntamenti\AppuntamentiPaziente;
 use App\Livewire\Admin\Audiometrie\AudiometriaPaziente;
 use App\Livewire\Admin\clienti\Clienti;
 use App\Livewire\Admin\clienti\InsertClient;
@@ -45,5 +46,8 @@ Route::get('clienti/audiometria/{idClient}/{idAudiometria?}', AudiometriaPazient
 
 //----------------- telefonate ---------------//
 Route::get('clienti/telefonate/{idClient}', TelefonatePaziente::class)->name('admin.clienti.telefonate');
+
+//----------------- appuntamenti ---------------//
+Route::get('clienti/appuntamenti/{idClient}', AppuntamentiPaziente::class)->name('admin.clienti.appuntamenti');
 
 require __DIR__.'/auth.php';
