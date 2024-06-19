@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Appuntamenti;
 use App\Models\Client;
 use App\Services\AppointmentService;
 use App\Services\ClientService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -14,6 +15,13 @@ class Agenda extends Component
 {
     public Client $client;
     public $events = [];
+    public $evento = [];
+    public $listaTipiAppuntamenti = [];
+    public $note;
+    public $showModalTypeAppointment = 0;
+    public $dataTimeAppointmentSelected;
+    public int $appointment_type_id;
+
 
     public function mount($idClient, ClientService $clientService, AppointmentService $appointmentService)
     {
@@ -31,14 +39,40 @@ class Agenda extends Component
     #[On('spostaEvento')]
     public function spostaEvento($evento, AppointmentService $appointmentService)
     {
-        /*$evento['user_id'] = Auth::id();
-        $evento['client_id'] = $evento['extendedProps']['client_id'];
-        $evento['start'] = Carbon::make($evento['start']);
-        unset($evento['extendedProps']);
-        unset($evento['title']);
-        unset($evento['allDay']);*/
         $appointmentService->modifica($evento);
         $this->redirectRoute('admin.clienti.telefonate', $this->client->id);
+    }
+
+    #[On('dataTimeSelected')]
+    public function dataTimeSelected($dataOra, AppointmentService $appointmentService)
+    {
+        $this->dataTimeAppointmentSelected = Carbon::make($dataOra);
+        $this->listaTipiAppuntamenti = $appointmentService->listaTipiAppuntamenti();
+        $this->showModalTypeAppointment = 1;
+        /*$this->evento['user_id'] = Auth::id();
+        $this->evento['client_id'] = $this->client->id;
+        $this->evento['start'] = Carbon::make($dataOra);
+        $appointmentService->crea($this->evento);
+        $this->redirectRoute('admin.clienti.telefonate', $this->client->id);*/
+    }
+
+    public function cancelPrenotaAppuntamento()
+    {
+        $this->showModalTypeAppointment = 0;
+        $this->redirectRoute('admin.clienti.appuntamenti', $this->client->id);
+    }
+
+    public function salvaAppuntamento(AppointmentService $appointmentService)
+    {
+        $this->evento['user_id'] = auth()->id();
+        $this->evento['client_id'] = $this->client->id;
+        $this->evento['appointment_type_id'] = $this->appointment_type_id;
+        $this->evento['note'] = $this->note;
+        $this->evento['start'] = $this->dataTimeAppointmentSelected;
+        $appointmentService->crea($this->evento);
+
+        session()->flash('appuntamento', 'appuntamento salvato con successo');
+        $this->redirect(route('admin.clienti.appuntamenti', $this->client->id));
     }
 
     public function render()

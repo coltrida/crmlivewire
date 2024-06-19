@@ -47,11 +47,27 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function appointments()
     {
         return $this->hasMany(Appointment::class);
+    }
+
+    public function shops()
+    {
+        return $this->belongsToMany(Shop::class);
+    }
+
+    public function isAdmin()
+    {
+        //dd($this->role->name === 'admin');
+        return $this->role->name === 'admin';
+    }
+
+    public function isAudio()
+    {
+        return $this->role->name === 'audio';
     }
 }

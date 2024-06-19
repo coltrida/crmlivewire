@@ -21,8 +21,10 @@
         @include('sweetalert::alert')
 
         <div class="min-h-screen bg-gray-100">
-            @if(auth()->user()->role_id === 1)
+            @if(auth()->user()->isAdmin())
                 <livewire:layout.navigation-admin />
+            @elseif(auth()->user()->isAudio())
+                <livewire:layout.navigation-user />
             @endif
 
             <!-- Page Heading -->
