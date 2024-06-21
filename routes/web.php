@@ -25,26 +25,29 @@ Route::view('profile', 'profile')
 
 Route::get('dashboard', Home::class)->name('dashboard');
 
-//----------------- clienti--------------------//
-Route::get('clienti/{idShop}', Clienti::class)->name('clienti');
-Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
+Route::middleware('auth')->group(function () {
 
-//----------------- magazzino ----------------//
-Route::get('magazzino/{idShop}', Magazzini::class)->name('admin.magazzino');
+    //----------------- clienti--------------------//
+    Route::get('clienti/{idShop}', Clienti::class)->name('clienti');
+    Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
 
-//----------------- prove --------------------//
-Route::get('clienti/prova/{idClient}', ProvaPaziente::class)->name('clienti.prova');
-Route::get('prove/{idShop}', ProveFiliale::class)->name('prove.filiale');
+    //----------------- magazzino ----------------//
+    Route::get('magazzino/{idShop}', Magazzini::class)->name('admin.magazzino');
 
-//------------------ audiometrie -------------//
-Route::get('clienti/audiometria/{idClient}/{idAudiometria?}', AudiometriaPaziente::class)->name('clienti.audiometria');
+    //----------------- prove --------------------//
+    Route::get('clienti/prova/{idClient}', ProvaPaziente::class)->name('clienti.prova');
+    Route::get('prove/{idShop}', ProveFiliale::class)->name('prove.filiale');
 
-//----------------- appuntamenti ---------------//
-Route::get('clienti/appuntamenti/{idClient}', Agenda::class)->name('clienti.appuntamenti');
+    //------------------ audiometrie -------------//
+    Route::get('clienti/audiometria/{idClient}/{idAudiometria?}', AudiometriaPaziente::class)->name('clienti.audiometria');
 
-//----------------- telefonate ---------------//
-Route::get('clienti/telefonate/{idClient}', TelefonatePaziente::class)->name('clienti.telefonate');
+    //----------------- appuntamenti ---------------//
+    Route::get('clienti/appuntamenti/{idClient}', Agenda::class)->name('clienti.appuntamenti');
 
+    //----------------- telefonate ---------------//
+    Route::get('clienti/telefonate/{idClient}', TelefonatePaziente::class)->name('clienti.telefonate');
+
+});
 
 require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';

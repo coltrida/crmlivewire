@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Pages\Clienti;
 
+use App\Models\Shop;
 use App\Services\ClientService;
 use App\Services\ShopService;
 use Livewire\Component;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Gate;
 
 class Clienti extends Component
 {
@@ -17,6 +19,11 @@ class Clienti extends Component
 
     public function mount($idShop)
     {
+        $shop = Shop::find($idShop);
+        if (! Gate::allows('view-shop', $shop)) {
+            abort(403);
+        }
+
         $this->idShop = $idShop;
         $this->search = null;
         if (session('status')){

@@ -6,6 +6,8 @@ use App\Livewire\Admin\Magazzini\RiepilogoMagazzini;
 use App\Livewire\Admin\Prove\RiepilogoProve;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['auth', \App\Http\Middleware\VerifyIsAdmin::class])->group(function () {
+
 //----------------- clienti--------------------//
 Route::get('clientiRiepilogo', RiepilogoClient::class)->name('admin.clienti.riepilogo');
 
@@ -15,6 +17,6 @@ Route::get('magazzinoRiepilogo', RiepilogoMagazzini::class)->name('admin.magazzi
 //----------------- prove --------------------//
 Route::get('prove/riepilogo', RiepilogoProve::class)->name('admin.prove.riepilogo');
 
-
+});
 
 
