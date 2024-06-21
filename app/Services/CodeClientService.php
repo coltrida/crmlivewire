@@ -10,4 +10,9 @@ class CodeClientService
     {
         return Codeclient::orderBy('name')->get();
     }
+
+    public function findIdFromName($name)
+    {
+        return Codeclient::where('name', $name)->first()->id;
+    }
 }

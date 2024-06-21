@@ -40,7 +40,7 @@
 
                             <x-slot name="content">
                                 @foreach($filiali as $filiale)
-                                    <x-dropdown-link :href="route('admin.clienti', ['idShop' => $filiale->id])" wire:navigate>
+                                    <x-dropdown-link :href="route('clienti', ['idShop' => $filiale->id])" wire:navigate>
                                         {{ $filiale->name }}
                                     </x-dropdown-link>
                                 @endforeach
@@ -72,7 +72,7 @@
 
                             <x-slot name="content">
                                 @foreach($filiali as $filiale)
-                                    <x-dropdown-link :href="route('admin.prove.filiale', ['idShop' => $filiale->id])" wire:navigate>
+                                    <x-dropdown-link :href="route('prove.filiale', ['idShop' => $filiale->id])" wire:navigate>
                                         {{ $filiale->name }}
                                     </x-dropdown-link>
                                 @endforeach

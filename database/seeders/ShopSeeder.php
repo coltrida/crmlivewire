@@ -39,5 +39,17 @@ class ShopSeeder extends Seeder
                 'postcode' => '55665',
                 'phone' => '073556544',
             ]);
+
+        Shop::factory()
+            ->count(1)
+            ->has(Client::factory()->count(10))
+            ->create([
+                'name' => 'Roma 1',
+                'address' => 'Via Sforza Pallavicini 26',
+                'city' => 'Roma',
+                'province' => 'RM',
+                'postcode' => '00199',
+                'phone' => '0635545465',
+            ]);
     }
 }

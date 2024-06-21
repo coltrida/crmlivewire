@@ -3,6 +3,14 @@
 use App\Http\Controllers\FrontController;
 use App\Livewire\Admin\Home;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Pages\clienti\Clienti;
+use App\Livewire\Pages\clienti\InsertClient;
+use App\Livewire\Pages\Prove\ProvaPaziente;
+use App\Livewire\Pages\Prove\ProveFiliale;
+use App\Livewire\Pages\Audiometrie\AudiometriaPaziente;
+use App\Livewire\Pages\Appuntamenti\Agenda;
+use App\Livewire\Pages\Telefonate\TelefonatePaziente;
+use App\Livewire\Pages\magazzini\Magazzini;
 
 Route::get('/', [FrontController::class, 'index'])->name('inizio');
 Route::post('/saveConfiguration', [FrontController::class, 'saveConfiguration'])->name('configuration.save');
@@ -17,6 +25,26 @@ Route::view('profile', 'profile')
 
 Route::get('dashboard', Home::class)->name('dashboard');
 
-require __DIR__.'/user.php';
+//----------------- clienti--------------------//
+Route::get('clienti/{idShop}', Clienti::class)->name('clienti');
+Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
+
+//----------------- magazzino ----------------//
+Route::get('magazzino/{idShop}', Magazzini::class)->name('admin.magazzino');
+
+//----------------- prove --------------------//
+Route::get('clienti/prova/{idClient}', ProvaPaziente::class)->name('clienti.prova');
+Route::get('prove/{idShop}', ProveFiliale::class)->name('prove.filiale');
+
+//------------------ audiometrie -------------//
+Route::get('clienti/audiometria/{idClient}/{idAudiometria?}', AudiometriaPaziente::class)->name('clienti.audiometria');
+
+//----------------- appuntamenti ---------------//
+Route::get('clienti/appuntamenti/{idClient}', Agenda::class)->name('clienti.appuntamenti');
+
+//----------------- telefonate ---------------//
+Route::get('clienti/telefonate/{idClient}', TelefonatePaziente::class)->name('clienti.telefonate');
+
+
 require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';

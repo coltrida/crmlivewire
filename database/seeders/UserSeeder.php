@@ -14,17 +14,20 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $cacao = User::create([
+            'name' => 'cacao cacao',
+            'email' => 'cacao@cacao.it',
+            'role_id' => 2,
+            'password' => Hash::make('123456')
+        ]);
+
+        $cacao->shops()->attach([1,2]);
+
         User::insert([
             [
                 'name' => 'admin admin',
                 'email' => 'admin@admin.it',
                 'role_id' => 1,
-                'password' => Hash::make('123456')
-            ],
-            [
-                'name' => 'cacao cacao',
-                'email' => 'cacao@cacao.it',
-                'role_id' => 2,
                 'password' => Hash::make('123456')
             ],
         ]);

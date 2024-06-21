@@ -83,4 +83,11 @@ class ClientService
     {
         Client::find($idClient)->delete();
     }
+
+    public function changeCodeClient($idClient, $idCode)
+    {
+        Client::find($idClient)->update([
+            'codeclient_id' => $idCode
+        ]);
+    }
 }
