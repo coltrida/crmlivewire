@@ -2,7 +2,7 @@
 
     <div class="flex justify-between mb-4 items-center">
         <div>
-            <a href="{{route('clienti', $idShop)}}" wire:navigate type="button" class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
+            <a href="{{ url()->previous() }}" wire:navigate type="button" class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
                 Indietro
             </a>
         </div>

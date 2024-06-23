@@ -57,7 +57,7 @@ class CreaProva extends Component
         $trialService->salvaProva($this->trialUnderConstruction->id, $idStateTrialInCorso, $this->note);
         $this->reset('trialUnderConstruction');
         session()->flash('prova', 'Prova in corso creata');
-        $this->redirect(route('admin.clienti.prova', $this->client->id));
+        $this->redirect(route('clienti.prova', $this->client->id));
     }
 
     public function render(SupplierService $supplierService, ProductService $productService)

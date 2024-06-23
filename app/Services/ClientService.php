@@ -13,6 +13,13 @@ class ClientService
         return Client::find($idClient);
     }
 
+    public function clientByIdPaginate($idClient)
+    {
+        return Client::with('codeclient', 'canal')
+            ->where('id', $idClient)
+            ->paginate(5);
+    }
+
     public function clientByIdWithTrialUnderConstruction($idClient)
     {
         return Client::with('trialsUnderConstructions')->find($idClient);

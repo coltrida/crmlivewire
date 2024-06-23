@@ -3,8 +3,10 @@
 namespace App\Livewire\Pages\Clienti;
 
 use App\Models\Client;
+use App\Models\Shop;
 use App\Services\CanaliService;
 use App\Services\CodeClientService;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -49,6 +51,11 @@ class InsertClient extends Component
 
     public function mount($idShop, $idClient=null)
     {
+        $shop = Shop::find($idShop);
+        if (! Gate::allows('view-shop', $shop)) {
+            abort(403);
+        }
+
         $this->shop_id = $idShop;
         $this->idShop = $idShop;
         if ($idClient){

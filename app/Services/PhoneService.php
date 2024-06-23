@@ -9,7 +9,9 @@ class PhoneService
 {
     public function clientByIdWithPhones($idClient)
     {
-        return Client::with('phones')->find($idClient);
+        return Client::with(['phones' => function($p){
+            $p->latest();
+        }])->find($idClient);
     }
 
     public function salvaTelefonata($request)

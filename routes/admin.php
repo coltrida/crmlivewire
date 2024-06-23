@@ -15,7 +15,7 @@ Route::get('clientiRiepilogo', RiepilogoClient::class)->name('admin.clienti.riep
 Route::get('magazzinoRiepilogo', RiepilogoMagazzini::class)->name('admin.magazzino.riepilogo');
 
 //----------------- prove --------------------//
-Route::get('prove/riepilogo', RiepilogoProve::class)->name('admin.prove.riepilogo');
+Route::get('proveRiepilogo', RiepilogoProve::class)->name('admin.prove.riepilogo');
 
 });
 

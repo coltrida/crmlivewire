@@ -126,16 +126,11 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile')" wire:navigate>
-                                    {{ __('Profile2') }}
-                                </x-dropdown-link>
-
-                                <!-- Authentication -->
-                                <button wire:click="logout" class="w-full text-start">
-                                    <x-dropdown-link>
-                                        {{ __('Log Out') }}
+                                @foreach($mieFiliali as $filiale)
+                                    <x-dropdown-link :href="route('prove.filiale', ['idShop' => $filiale->id])" wire:navigate>
+                                        {{ $filiale->name }}
                                     </x-dropdown-link>
-                                </button>
+                                @endforeach
                             </x-slot>
                         </x-dropdown>
                     </div>
@@ -160,16 +155,11 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile')" wire:navigate>
-                                    {{ __('Profile2') }}
-                                </x-dropdown-link>
-
-                                <!-- Authentication -->
-                                <button wire:click="logout" class="w-full text-start">
-                                    <x-dropdown-link>
-                                        {{ __('Log Out') }}
+                                @foreach($mieFiliali as $filiale)
+                                    <x-dropdown-link :href="route('prove.filiale', ['idShop' => $filiale->id])" wire:navigate>
+                                        {{ $filiale->name }}
                                     </x-dropdown-link>
-                                </button>
+                                @endforeach
                             </x-slot>
                         </x-dropdown>
                     </div>

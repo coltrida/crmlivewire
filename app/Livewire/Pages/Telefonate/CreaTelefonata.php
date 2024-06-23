@@ -27,7 +27,7 @@ class CreaTelefonata extends Component
         $phoneService->salvaTelefonata($this->except('client'));
         session()->flash('phone', $this->esito);
         $this->reset('esito', 'note');
-        $this->redirect(route('admin.clienti.telefonate', $this->client->id));
+        $this->redirect(route('clienti.telefonate', $this->client->id));
     }
 
     public function render()

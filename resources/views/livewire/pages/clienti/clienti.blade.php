@@ -2,20 +2,24 @@
 
     <div class="flex justify-between mb-4 items-center">
         <div>
-            <a href="{{route('clienti.insert', $idShop)}}" wire:navigate type="button"
-               class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
-                Nuovo paziente
-            </a>
+
         </div>
         <div>
             <h2 class="text-xl font-semibold text-center mb-4">Clienti: {{$shopById->name}}</h2>
         </div>
         <div class="relative">
-            <input wire:model.live="search"
-                   type="search"
-                   id="default-search"
-                   class="block w-60 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                   placeholder="Search..."/>
+            @if($idClient)
+                <a href="{{ url()->previous() }}" wire:navigate type="button"
+                   class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
+                    Indietro
+                </a>
+            @else
+                <input wire:model.live="search"
+                       type="search"
+                       id="default-search"
+                       class="block w-60 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Search..."/>
+            @endif
         </div>
     </div>
 

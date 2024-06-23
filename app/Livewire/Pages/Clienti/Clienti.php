@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Clienti;
 use App\Models\Shop;
 use App\Services\ClientService;
 use App\Services\ShopService;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -16,14 +17,16 @@ class Clienti extends Component
 
     public $idShop;
     public $search;
+    public $idClient;
 
-    public function mount($idShop)
+    public function mount($idShop, $idClient=null)
     {
         $shop = Shop::find($idShop);
         if (! Gate::allows('view-shop', $shop)) {
             abort(403);
         }
 
+        $this->idClient = $idClient;
         $this->idShop = $idShop;
         $this->search = null;
         if (session('status')){
@@ -39,7 +42,10 @@ class Clienti extends Component
     public function render(ClientService $clientService, ShopService $shopService)
     {
         return view('livewire.pages.clienti.clienti', [
-            'clientOfShopPaginate' => $clientService->clientOfShopWithSearchPaginate($this->idShop, $this->search),
+            'clientOfShopPaginate' =>
+                $this->idClient
+                    ? $clientService->clientByIdPaginate($this->idClient)
+                    : $clientService->clientOfShopWithSearchPaginate($this->idShop, $this->search),
             'shopById' => $shopService->shopById($this->idShop)
         ])->layout('layouts.app');
     }

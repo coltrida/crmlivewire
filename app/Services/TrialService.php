@@ -107,4 +107,29 @@ class TrialService
             }]);
         }])->find($idProva);
     }
+
+    public function listaProveByIdFilialePaginate($idShop, $search)
+    {
+        if ($search){
+            return Trial::with('client', 'canal', 'trialState')
+                ->whereHas('client', function($c) use($idShop, $search){
+                    $c->where([
+                        ['shop_id', $idShop],
+                        ['fullname', 'like', '%'.$search.'%']
+                    ])->orWhere([
+                        ['shop_id', $idShop],
+                        ['fullnamereverse', 'like', '%'.$search.'%']
+                    ]);
+                })
+                ->latest()
+                ->paginate(5);
+        }
+
+        return Trial::with('client', 'canal', 'trialState')
+            ->whereHas('client', function($c) use($idShop){
+                $c->where('shop_id', $idShop);
+            })
+            ->latest()
+            ->paginate(5);
+    }
 }

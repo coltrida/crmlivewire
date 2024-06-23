@@ -43,7 +43,7 @@
                         {{$product->productList->name}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$product->productList->prize_formatted}}
+                        {{$product->productList->prize_formattato}}
                     </td>
                     <td class="px-6 py-4">
                         {{$product->productState->name}}

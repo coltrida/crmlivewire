@@ -27,10 +27,6 @@ Route::get('dashboard', Home::class)->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
-    //----------------- clienti--------------------//
-    Route::get('clienti/{idShop}', Clienti::class)->name('clienti');
-    Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
-
     //----------------- magazzino ----------------//
     Route::get('magazzino/{idShop}', Magazzini::class)->name('admin.magazzino');
 
@@ -46,6 +42,10 @@ Route::middleware('auth')->group(function () {
 
     //----------------- telefonate ---------------//
     Route::get('clienti/telefonate/{idClient}', TelefonatePaziente::class)->name('clienti.telefonate');
+
+    //----------------- clienti--------------------//
+    Route::get('clienti/{idShop}/{idClient?}', Clienti::class)->name('clienti');
+    Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
 
 });
 
