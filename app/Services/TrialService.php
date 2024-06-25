@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Product;
 use App\Models\Trial;
 use App\Models\TrialState;
+use App\Models\User;
 use Carbon\Carbon;
 
 class TrialService
@@ -13,6 +14,7 @@ class TrialService
     public function creaProva($client_id, $canal_id, $trial_state_id)
     {
         $trial = Trial::create([
+            'user_id' => auth()->id(),
             'client_id' => $client_id,
             'canal_id' => $canal_id,
             'trial_state_id' => $trial_state_id
@@ -129,6 +131,32 @@ class TrialService
             ->whereHas('client', function($c) use($idShop){
                 $c->where('shop_id', $idShop);
             })
+            ->latest()
+            ->paginate(5);
+    }
+
+    public function listeProveInCorsoByIdUser($idUser)
+    {
+        return Trial::with('client', 'canal', 'trialState')
+            ->whereHas('trialState', function ($ts){
+                $ts->where('name', 'In Corso');
+            })
+            ->where('user_id', $idUser)
+            ->latest()
+            ->paginate(5);
+    }
+
+    public function listeProveFinalizzateNelMese($idUser)
+    {
+        $startMonth = Carbon::now()->firstOfMonth();
+        $endMonth = Carbon::now()->endOfMonth();
+
+        return Trial::with('client', 'canal', 'trialState')
+            ->whereHas('trialState', function ($ts){
+                $ts->where('name', 'Positiva');
+            })
+            ->where('user_id', $idUser)
+            ->whereBetween('dataFinalizzatoReso', [$startMonth, $endMonth])
             ->latest()
             ->paginate(5);
     }

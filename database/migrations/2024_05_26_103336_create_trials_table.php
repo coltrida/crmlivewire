@@ -3,6 +3,7 @@
 use App\Models\Canal;
 use App\Models\Client;
 use App\Models\TrialState;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->float('importoTot')->nullable();
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(Canal::class);
+            $table->foreignIdFor(User::class);
             $table->date('dataFinalizzatoReso')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
