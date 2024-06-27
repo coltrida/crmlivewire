@@ -15,6 +15,8 @@ use App\Livewire\Pages\magazzini\Magazzini;
 Route::get('/', [FrontController::class, 'index'])->name('inizio');
 Route::post('/saveConfiguration', [FrontController::class, 'saveConfiguration'])->name('configuration.save');
 
+Route::get('/analisiGiornaliere', [FrontController::class, 'analisi']);
+
 /*Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');*/
@@ -45,7 +47,7 @@ Route::middleware('auth')->group(function () {
 
     //----------------- clienti--------------------//
     Route::get('clienti/{idShop}/{idClient?}', Clienti::class)->name('clienti');
-    Route::get('clienti/insert/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
+    Route::get('insertclienti/{idShop}/{idClient?}', InsertClient::class)->name('clienti.insert');
 
 });
 

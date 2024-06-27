@@ -17,32 +17,38 @@ class CodeclientSeeder extends Seeder
             [
                 'name' => 'CL',
                 'description' => 'cliente',
-                'daysOfRecall' => 60
+                'daysOfRecall' => 60,
+                'activeRecall' => 1
             ],
             [
                 'name' => 'PC',
                 'description' => 'Possibile Cliente',
-                'daysOfRecall' => 90
+                'daysOfRecall' => 90,
+                'activeRecall' => 1
             ],
             [
                 'name' => 'CLC',
                 'description' => 'cliente concorrenza',
-                'daysOfRecall' => 360
+                'daysOfRecall' => 360,
+                'activeRecall' => 1
             ],
             [
                 'name' => 'NU',
                 'description' => 'normoudente',
-                'daysOfRecall' => 360
+                'daysOfRecall' => 360,
+                'activeRecall' => 1
             ],
             [
                 'name' => 'TAPPO',
                 'description' => 'tappo cerume',
-                'daysOfRecall' => 60
+                'daysOfRecall' => 60,
+                'activeRecall' => 0
             ],
             [
                 'name' => 'DEC',
                 'description' => 'deceduto',
-                'daysOfRecall' => null
+                'daysOfRecall' => null,
+                'activeRecall' => 0
             ],
         ]);
     }

@@ -55,4 +55,9 @@ class Trial extends Model
     {
         return $this->hasOne(Invoice::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

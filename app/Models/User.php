@@ -45,6 +45,16 @@ class User extends Authenticatable
         ];
     }
 
+    public function isAdmin()
+    {
+        return $this->role->name === 'admin';
+    }
+
+    public function isAudio()
+    {
+        return $this->role->name === 'audio';
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -60,14 +70,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Shop::class);
     }
 
-    public function isAdmin()
+    public function trials()
     {
-        //dd($this->role->name === 'admin');
-        return $this->role->name === 'admin';
-    }
-
-    public function isAudio()
-    {
-        return $this->role->name === 'audio';
+        return $this->hasMany(Trial::class);
     }
 }

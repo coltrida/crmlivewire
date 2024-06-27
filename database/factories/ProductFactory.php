@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             'matricola' => fake()->randomNumber(5, true),
             'product_state_id' => rand(1,5),
-            'shop_id' => rand(1,2)
+            'shop_id' => rand(1,3)
         ];
     }
 }

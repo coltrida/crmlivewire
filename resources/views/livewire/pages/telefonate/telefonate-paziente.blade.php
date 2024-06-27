@@ -1,12 +1,13 @@
 <div>
     <div class="py-12">
         <div class="max-w-full px-6 mx-auto flex">
+
             @if(session('phone') && session('phone') == 'appuntamento')
                 <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" >
 
                     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-                    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div class="fixed inset-0 z-10 w-screen overflow-y-auto" >
                         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 
                             <div
@@ -49,15 +50,25 @@
                                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     <datalist id="avail">
                                                         <option value="09:00">
+                                                        <option value="09:30">
                                                         <option value="10:00">
+                                                        <option value="10:30">
                                                         <option value="11:00">
+                                                        <option value="11:30">
                                                         <option value="12:00">
+                                                        <option value="12:30">
                                                         <option value="13:00">
+                                                        <option value="13:30">
                                                         <option value="14:00">
+                                                        <option value="14:30">
                                                         <option value="15:00">
+                                                        <option value="15:30">
                                                         <option value="16:00">
+                                                        <option value="16:30">
                                                         <option value="17:00">
+                                                        <option value="17:30">
                                                         <option value="18:00">
+                                                        <option value="18:30">
                                                     </datalist>
                                                 </div>
                                             </div>
@@ -106,6 +117,7 @@
                 <livewire:pages.telefonate.crea-telefonata :idClient="$idClient"/>
             </div>
             <div class="w-10/12 mr-2">
+
                 <livewire:pages.appuntamenti.agenda :idClient="$idClient"/>
             </div>
         </div>

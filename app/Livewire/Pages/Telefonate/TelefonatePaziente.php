@@ -42,7 +42,7 @@ class TelefonatePaziente extends Component
         $appointmentService->crea($this->evento);
 
         session()->flash('appuntamento', 'appuntamento salvato con successo');
-        $this->redirect(route('admin.clienti.telefonate', $this->idClient));
+        $this->redirect(route('clienti.telefonate', $this->idClient));
     }
 
     public function render()

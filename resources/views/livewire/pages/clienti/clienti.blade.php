@@ -2,7 +2,12 @@
 
     <div class="flex justify-between mb-4 items-center">
         <div>
-
+            @if(!$idClient)
+            <a href="{{route('clienti.insert', $idShop)}}" wire:navigate type="button"
+               class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3.5 text-center me-2 mb-2">
+                Nuovo paziente
+            </a>
+            @endif
         </div>
         <div>
             <h2 class="text-xl font-semibold text-center mb-4">Clienti: {{$shopById->name}}</h2>

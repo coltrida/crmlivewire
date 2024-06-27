@@ -14,6 +14,9 @@ class CreaTelefonata extends Component
     public string $note;
     public int $client_id;
     public int $user_id;
+    public int $showProgrammaTelefonata = 0;
+    public $recallDate;
+    public $recallTime;
 
     public function mount($idClient, PhoneService $phoneService)
     {
@@ -24,8 +27,30 @@ class CreaTelefonata extends Component
 
     public function salvaTelefonata(PhoneService $phoneService)
     {
-        $phoneService->salvaTelefonata($this->except('client'));
+        $phoneService->salvaTelefonata($this->except(['client', 'showProgrammaTelefonata',
+            'recallDate', 'recalTime']));
         session()->flash('phone', $this->esito);
+        $this->reset('esito', 'note');
+        $this->redirect(route('clienti.telefonate', $this->client->id));
+    }
+
+    public function programmaTelefonata()
+    {
+        $this->showProgrammaTelefonata = 1;
+    }
+
+    public function annullaProgrammaTelefonata()
+    {
+        $this->showProgrammaTelefonata = 0;
+        $this->recallDate = null;
+        $this->recallTime = null;
+    }
+
+    public function salvaTelefonataProgrammata(PhoneService $phoneService)
+    {
+        $phoneService->programmaTelefonata($this->except(['client', 'showProgrammaTelefonata',
+            'esito', 'note']));
+        session()->flash('phone', 'Telefonata Programmata');
         $this->reset('esito', 'note');
         $this->redirect(route('clienti.telefonate', $this->client->id));
     }

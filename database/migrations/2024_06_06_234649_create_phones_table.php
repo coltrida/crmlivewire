@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(User::class);
-            $table->string('esito');
+            $table->string('esito')->nullable();
             $table->text('note')->nullable();
+            $table->date('recallDate')->nullable();
+            $table->time('recallTime')->nullable();
+            $table->dateTime('effettuata')->nullable();
             $table->timestamps();
         });
     }

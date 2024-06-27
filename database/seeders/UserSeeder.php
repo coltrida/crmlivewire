@@ -23,6 +23,15 @@ class UserSeeder extends Seeder
 
         $cacao->shops()->attach([1,2]);
 
+        $cacao2 = User::create([
+            'name' => 'cacao2 cacao2',
+            'email' => 'cacao2@cacao.it',
+            'role_id' => 2,
+            'password' => Hash::make('123456')
+        ]);
+
+        $cacao2->shops()->attach([3]);
+
         User::insert([
             [
                 'name' => 'admin admin',

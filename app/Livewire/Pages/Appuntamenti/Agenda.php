@@ -59,7 +59,7 @@ class Agenda extends Component
     public function cancelPrenotaAppuntamento()
     {
         $this->showModalTypeAppointment = 0;
-        $this->redirectRoute('admin.clienti.appuntamenti', $this->client->id);
+        $this->redirect(url()->previous());
     }
 
     public function salvaAppuntamento(AppointmentService $appointmentService)

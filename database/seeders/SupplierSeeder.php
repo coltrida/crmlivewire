@@ -19,7 +19,7 @@ class SupplierSeeder extends Seeder
             ->count(1)
             ->has(
                 ProductList::factory()->count(5)
-                    ->has(Product::factory()->count(16))
+                    ->has(Product::factory()->count(30))
             )
             ->create([
                 'name' => 'Gn Resound',
@@ -30,7 +30,7 @@ class SupplierSeeder extends Seeder
 
         Supplier::factory()
             ->count(1)
-            ->has(ProductList::factory()->count(5))
+            ->has(ProductList::factory()->count(15))
             ->create([
                 'name' => 'Rexton',
                 'iban' => 'IT34343432343430C2323',
